@@ -27,7 +27,10 @@ public class Pogoda {
                     try {
                         System.out.print("miasto: ");
                         String city = sc.next();
-                        System.out.println(WeatherFetcher.fetchWeather(city, "pl"));
+
+                        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
+                        WeatherFetcher.fetchWeather(city, "pl").outputWeatherDataToConsole();
+                        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
                     } catch (IllegalArgumentException e) {
                         System.out.println("WPROWADZONO NIEPRAWIDŁOWE DANE LOKALIZACJI");
                         System.out.println("~przykład  miasto: torun");
@@ -39,7 +42,10 @@ public class Pogoda {
                         String city = sc.next();
                         System.out.print("kod państwa: ");
                         String country = sc.next();
-                        System.out.println(WeatherFetcher.fetchWeather("torun", "pl"));
+
+                        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
+                        WeatherFetcher.fetchWeather(city, country).outputWeatherDataToConsole();
+                        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
                     } catch (IllegalArgumentException e) {
                         System.out.println("WPROWADZONO NIEPRAWIDŁOWE DANE LOKALIZACJI");
                         System.out.println("~przykład  miasto: torun, kod państwa: pl");

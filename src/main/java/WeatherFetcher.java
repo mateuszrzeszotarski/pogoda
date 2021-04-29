@@ -28,6 +28,6 @@ public class WeatherFetcher {
     }
 
     public static WeatherData fetchWeather(String cityName, String countryCode) {
-        return new WeatherData(fetch("http://api.openweathermap.org/data/2.5/weather?q="+cityName+","+countryCode+"&APPID=41e331119c476ed17cf52fda4eb427df"));
+        return new WeatherData(fetch("http://api.openweathermap.org/data/2.5/weather?q="+cityName+","+countryCode+"&APPID=41e331119c476ed17cf52fda4eb427df&units=metric&lang=pl"));
     }
 }

@@ -12,7 +12,7 @@ public class WeatherData {
         JSONObject obj = new JSONObject(jsonString);
 
         try {
-            main = obj.getJSONArray("weather").getJSONObject(0).getString("main");
+            main = obj.getJSONArray("weather").getJSONObject(0).getString("description");
 
             JSONObject mainData = obj.getJSONObject("main");
             temp = mainData.getFloat("temp");
@@ -25,6 +25,13 @@ public class WeatherData {
 
     }
 
+    public void outputWeatherDataToConsole() {
+        System.out.println("zachmurzenie: " + main);
+        System.out.println("obecna temperatura: " + temp+"°C");
+        System.out.println("odczuwalna temperatura: " + feels_like+"°C");
+        System.out.println("najwyższa temperatura dzisiaj: " + temp_min+"°C");
+        System.out.println("najniższa temperatura dzisiaj: " + temp_max+"°C");
+    }
 
     public String getMain() {
         return main;
