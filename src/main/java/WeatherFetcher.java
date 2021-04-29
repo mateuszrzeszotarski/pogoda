@@ -25,7 +25,7 @@ public class WeatherFetcher {
         }
     }
 
-    public static String fetchWeather(String cityName, String countryCode) {
-        return fetch("http://api.openweathermap.org/data/2.5/weather?q="+cityName+","+countryCode+"&APPID=41e331119c476ed17cf52fda4eb427df");
+    public static WeatherData fetchWeather(String cityName, String countryCode) {
+        return new WeatherData(fetch("http://api.openweathermap.org/data/2.5/weather?q="+cityName+","+countryCode+"&APPID=41e331119c476ed17cf52fda4eb427df"));
     }
 }
