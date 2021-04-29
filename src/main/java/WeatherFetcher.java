@@ -4,24 +4,26 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WeatherFetcher {
-    private static String fetch(String urlString) {
+    private static String fetch(String urlString) throws IllegalArgumentException{
         try {
             URL url = new URL(urlString);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
-
-            InputStream responseStream = con.getInputStream();
-            ByteArrayOutputStream responseString = new ByteArrayOutputStream();
-            byte[] buffer = new byte[8192];
-            int length;
-            while ((length = responseStream.read(buffer)) != -1) {
-                responseString.write(buffer, 0, length);
+            if (con.getResponseCode() == 200) {
+                InputStream responseStream = con.getInputStream();
+                ByteArrayOutputStream responseString = new ByteArrayOutputStream();
+                byte[] buffer = new byte[8192];
+                int length;
+                while ((length = responseStream.read(buffer)) != -1) {
+                    responseString.write(buffer, 0, length);
+                }
+                return responseString.toString();
+            } else {
+                throw new IllegalArgumentException();
             }
-            return responseString.toString();
 
         } catch (Exception er) {
-            er.printStackTrace();
-            return "{}";
+            throw new IllegalArgumentException();
         }
     }
 
